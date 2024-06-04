@@ -318,6 +318,12 @@ with tabs[0]:
     st.altair_chart(combined_chart, use_container_width=True)
     st.altair_chart(savings_chart, use_container_width=True)
 
+    # Calculate total solar cost savings over 36 months
+    total_solar_savings = chart_data['Cost Savings'].sum()
+
+    # Display the total solar cost savings as a metric
+    st.metric("Total Solar Cost Savings over 36 months", f"₦{total_solar_savings:,.2f}")
+
     # DataFrame configuration
     cost_type_selection = st.selectbox("Select Cost Type", ["Generator Grid Cost", "Solar Cost"], key="cost_type_selection")
 
@@ -454,3 +460,4 @@ with tabs[2]:
         <p class="logic">0-100% Battery Charge Time in hours = {battery_capacity} / {watts_generated_per_hour_daytime}</p>
     </div>
     """, unsafe_allow_html=True)
+
